@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>form</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-success text-center">
+        Complete Form Validation In Javascript
+      </h2>
+      <div class="col-lg-8 m-auto d-block">
+        <form action="#" onsubmit="return validation()" class="bg-light">
+          <div class="form-group">
+            <label> Username: </label>
+            <input type="text" name="user" class="form-control" id="user" />
+            <span id="username" class="text-danger fornt-weight-bold"></span>
+          </div>
+          <div class="form-group">
+            <label for="password"> Passward: </label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="password"
+            />
+            <span id="pass" class="text-danger fornt-weight-bold"></span>
+          </div>
+          <div class="form-group">
+            <label for="conpass"> Confirm Passward: </label>
+            <input
+              type="password"
+              name="conpass"
+              class="form-control"
+              id="conpass"
+            />
+            <span id="cpass" class="text-danger fornt-weight-bold"></span>
+          </div>
+          <div class="form-group">
+            <label for="num"> Mobile Number: </label>
+            <input type="number" name="num" class="form-control" id="mobnum" />
+            <span id="num" class="text-danger fornt-weight-bold"></span>
+          </div>
+          <div class="form-group">
+            <label for="name"> Email: </label>
+            <input type="text" name="email" class="form-control" id="email" />
+            <span id="emailid" class="text-danger fornt-weight-bold"></span>
+          </div>
+          <input
+            type="submit"
+            name="submit"
+            value="submit"
+            class="btn btn-success"
+          />
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function validation() {
+        var user = document.getElementById("user").value;
+        var pass = document.getElementById("password").value;
+        var cpass = document.getElementById("conpass").value;
+        var num = document.getElementById("mobnum").value;
+        var emailid = document.getElementById("email").value;
+        if (user == "") {
+          document.getElementById("username").innerHTML =
+            " ** Please fill the username   field";
+          return false;
+        }
+        if (user.length <= 2 || user.length >= 20) {
+          document.getElementById("username").innerHTML =
+            "User length must be between 2 and 20";
+          return false;
+        }
+        if (!isNaN(user)) {
+          document.getElementById("username").innerHTML =
+            " Only characters are allowed";
+          return false;
+        }
+
+        if (password == "") {
+          document.getElementById("pass").innerHTML =
+            " Please fill the Password";
+          return false;
+        }
+        if (password.length <= 5 || password.length >= 20) {
+          document.getElementById("pass").innerHTML =
+            " Passward length must be between 5 and 20";
+          return false;
+        }
+        if (password != conpass) {
+          document.getElementById("cpass").innerHTML =
+            " Passward are not matching";
+          return false;
+        }
+        if (conpass == "") {
+          document.getElementById("cpass").innerHTML =
+            " ** Please fill the confirm passward";
+          return false;
+        }
+
+        if (mobnum == "") {
+          document.getElementById("num").innerHTML =
+            " ** Please fill the Mobile number";
+          return false;
+        }
+        if (isNaN(mobnum)) {
+          document.getElementById("num").innerHTML =
+            " ** User must write digit only not characters";
+          return false;
+        }
+        if (mobnum.length != 10) {
+          document.getElementById("num").innerHTML =
+            " ** Mobile number must be 10 digit only";
+          return false;
+        }
+        if (email == "") {
+          document.getElementById("emailid").innerHTML =
+            " ** Please fill the Email-id";
+          return false;
+        }
+        if (email.indexof("@") <= 0) {
+          document.getElementById("emailid").innerHTML = "@ Invalid position";
+          return false;
+        }
+        if (
+          email.charAt(email.length - 4) != "." &&
+          email.charAt(email.length - 3) != "."
+        ) {
+          document.getElementById("emailid").innerHTML = " . Invalid position";
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
